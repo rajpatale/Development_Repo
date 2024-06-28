@@ -8,6 +8,8 @@ public class WebTracker1Application {
 
 	public static void main(String[] args) {
 		SpringApplication.run(WebTracker1Application.class, args);
+		
 	}
+	
 
 }
