@@ -1,7 +1,11 @@
 package com.webtracker.entity;
 
+import java.util.HashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,10 +21,12 @@ public class User {
 	private String username;
 	private String password;
 	
-	@OneToMany
+	@OneToMany (mappedBy = "user",cascade = CascadeType.ALL)
+	@JsonManagedReference
 	private Set<Timesheet> timesheet;
 	
-	@OneToMany
+	@OneToMany (mappedBy = "user" ,cascade = CascadeType.ALL)
+	@JsonManagedReference
 	private Set<ScreenActivity> screenactivity;
 
 	
@@ -52,6 +58,17 @@ public class User {
 	public Set<Timesheet> getTimesheet() {
 		return timesheet;
 	}
+//	public Set<Timesheet> getTimesheet() {
+//	    Timesheet a = new Timesheet();
+//	    a.getId();
+//	    a.getLoginTime();
+//	    a.getLogoutTime();
+//	    
+//	    Set<Timesheet> timesheetSet = new HashSet<>();
+//	    timesheetSet.add(a);
+//	    
+//	    return timesheetSet;
+//	}
 
 	public void setTimesheet(Set<Timesheet> timesheet) {
 		this.timesheet = timesheet;
@@ -60,6 +77,16 @@ public class User {
 	public Set<ScreenActivity> getScreenactivity() {
 		return screenactivity;
 	}
+//	public Set<ScreenActivity> getScreenactivity() {
+//		ScreenActivity b= new ScreenActivity();
+//		b.setId(getId());
+//		b.getTimestamp();
+//		b.getActivity();
+//		
+//		Set<ScreenActivity> screenActivity = new HashSet<>();
+//		screenActivity.add(b);
+//		return screenActivity;
+//	}
 
 	public void setScreenactivity(Set<ScreenActivity> screenactivity) {
 		this.screenactivity = screenactivity;

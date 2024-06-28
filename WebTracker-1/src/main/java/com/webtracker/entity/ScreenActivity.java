@@ -2,6 +2,8 @@ package com.webtracker.entity;
 
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,11 +18,13 @@ public class ScreenActivity {
     @Id
     //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
     private LocalDateTime timestamp;
     private String activity;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonBackReference
     private User user;
 
 	public Long getId() {

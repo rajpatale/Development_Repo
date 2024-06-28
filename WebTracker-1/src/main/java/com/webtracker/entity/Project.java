@@ -2,6 +2,9 @@ package com.webtracker.entity;
 
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,7 +19,8 @@ public class Project {
 	    private Long id;
 	    private String name;
 
-	    @OneToMany
+	    @OneToMany (mappedBy = "project",cascade = CascadeType.ALL)
+	    @JsonManagedReference
 	    private Set<Timesheet> timesheets;
 
 		public Long getId() {
