@@ -28,8 +28,6 @@ public class User {
 	@JsonManagedReference
 	private Set<ScreenActivity> screenactivity;
 
-	
-
 	public Long getId() {
 		return id;
 	}
